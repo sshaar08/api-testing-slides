@@ -26,11 +26,31 @@
             <!-- ========== SLIDE 2: PROBLEM OVERVIEW (Section 1) ========== -->
             <section>
                 <h2>The Problem</h2>
-                <p class="fragment fade-up">Java regression monolith was <strong>only maintainable by 2 SDETs</strong></p>
-                <p class="fragment fade-up">5-7 manual QA engineers <strong>couldn't contribute</strong></p>
-                <p class="fragment fade-up">Testing was a <strong>bottleneck</strong> for the team</p>
-                <p class="fragment fade-up" style="color: #42b983; font-size: 0.8em; margin-top: 30px;">
-                    <em>"We couldn't share the testing load because nobody else knew Java."</em>
+                <div class="sbi-container">
+                    <div class="sbi-item fragment fade-up">
+                        <span class="sbi-label" style="background: #e74c3c;">Situation</span>
+                        <p>1800+ microservices, growing fast. 5-7 manual QA engineers, only 4 SDETs total.</p>
+                    </div>
+                    <div class="sbi-item fragment fade-up">
+                        <span class="sbi-label" style="background: #f39c12;">Behavior</span>
+                        <ul>
+                            <li><strong>Java monolith</strong> — only 2 SDETs could maintain it</li>
+                            <li><strong>No CI pipeline</strong> — tests ran manually, bi-weekly at best</li>
+                            <li><strong>Zero automation culture</strong> — QA couldn't write code</li>
+                        </ul>
+                    </div>
+                    <div class="sbi-item fragment fade-up">
+                        <span class="sbi-label" style="background: #9b59b6;">Impact</span>
+                        <ul>
+                            <li>Testing was a <strong>bottleneck</strong> for releases</li>
+                            <li>Broken APIs caught <strong>hours to days</strong> after deploy</li>
+                            <li>5-7 QA engineers <strong>couldn't contribute</strong></li>
+                            <li>Releases <strong>piled up</strong> waiting for QA sign-off</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="fragment fade-up" style="color: #42b983; font-size: 0.75em; margin-top: 20px;">
+                    <em>"We couldn't share the testing load because nobody else could touch the code."</em>
                 </p>
             </section>
 
