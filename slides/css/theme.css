@@ -1,23 +1,33 @@
 /* Custom Theme for API Testing Presentation */
+/* Simplified palette with high contrast */
 :root {
-    --r-background-color: #1a1a2e;
+    --r-background-color: #0f172a;
     --r-main-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --r-main-font-size: 32px;
-    --r-main-color: #eaeaea;
+    --r-main-color: #f1f5f9;
     --r-heading-font: 'Inter', sans-serif;
-    --r-heading-color: #42b983;
+    --r-heading-color: #22c55e;
     --r-heading-font-weight: 600;
-    --r-link-color: #42b983;
-    --r-link-color-dark: #2d8a5f;
+    --r-link-color: #22c55e;
+    --r-link-color-dark: #16a34a;
+    
+    /* Simple accent colors */
+    --green: #22c55e;
+    --red: #ef4444;
+    --blue: #3b82f6;
+    --amber: #f59e0b;
+    --purple: #a855f7;
+    --gray: #64748b;
+    --light: #f1f5f9;
 }
 
 /* Typography */
 .reveal h1 { font-size: 2.2em; }
-.reveal h2 { font-size: 1.5em; color: #42b983; border-bottom: 2px solid #42b983; padding-bottom: 10px; display: inline-block; }
-.reveal h3 { font-size: 1.1em; color: #a8dadc; }
+.reveal h2 { font-size: 1.5em; color: var(--green); border-bottom: 2px solid var(--green); padding-bottom: 10px; display: inline-block; }
+.reveal h3 { font-size: 1.1em; color: var(--light); }
 .reveal p, .reveal li { font-size: 0.85em; }
-.reveal strong { color: #42b983; }
-.reveal code { background: rgba(66, 185, 131, 0.2); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+.reveal strong { color: var(--green); }
+.reveal code { background: rgba(34, 197, 94, 0.2); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
 
 /* Tables */
 .reveal table { font-size: 0.75em; }
@@ -41,32 +51,33 @@
     margin-top: 20px;
 }
 .sbi-item {
-    background: rgba(66, 185, 131, 0.08);
+    background: rgba(34, 197, 94, 0.1);
     padding: 15px 20px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    border-left: 4px solid;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--green);
 }
 .sbi-item:last-of-type {
     margin-bottom: 0;
 }
 .sbi-label {
     display: inline-block;
-    color: #fff;
+    color: #0f172a;
     font-weight: bold;
-    font-size: 0.65em;
-    padding: 4px 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    font-size: 0.6em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 8px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    background: var(--green);
 }
 .sbi-item ul {
     margin: 5px 0 0 0;
     padding-left: 20px;
 }
 .sbi-item li {
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     font-size: 0.8em;
 }
 
@@ -78,16 +89,16 @@
     margin-top: 25px;
 }
 .context-item {
-    background: linear-gradient(135deg, rgba(66, 185, 131, 0.2), rgba(66, 185, 131, 0.05));
+    background: rgba(34, 197, 94, 0.1);
     padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(66, 185, 131, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(34, 197, 94, 0.2);
     text-align: center;
 }
 .context-label {
     display: block;
-    font-size: 0.65em;
-    color: #a8dadc;
+    font-size: 0.6em;
+    color: var(--gray);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 5px;
@@ -96,7 +107,7 @@
     display: block;
     font-size: 1.1em;
     font-weight: bold;
-    color: #fff;
+    color: var(--light);
 }
 
 /* Challenges List */
@@ -106,10 +117,10 @@
 }
 .challenges-list p {
     font-size: 0.9em;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     padding: 10px 15px;
-    background: rgba(231, 76, 60, 0.1);
-    border-left: 3px solid #e74c3c;
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 3px solid var(--red);
     border-radius: 0 5px 5px 0;
 }
 
@@ -119,31 +130,31 @@
     margin-top: 15px;
 }
 .decision {
-    background: rgba(66, 185, 131, 0.1);
+    background: rgba(34, 197, 94, 0.08);
     padding: 12px 15px;
     border-radius: 8px;
     margin-bottom: 12px;
-    border-left: 3px solid #42b983;
+    border-left: 3px solid var(--green);
 }
 .decision-q {
     display: block;
     font-weight: bold;
-    color: #42b983;
+    color: var(--green);
     font-size: 0.85em;
 }
 .decision-a {
     display: block;
-    color: #ccc;
+    color: var(--gray);
     font-size: 0.75em;
     margin-top: 3px;
 }
 
 /* Solution Highlights */
 .solution-highlights {
-    background: linear-gradient(135deg, rgba(66, 185, 131, 0.15), rgba(66, 185, 131, 0.05));
+    background: rgba(34, 197, 94, 0.1);
     padding: 15px 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(66, 185, 131, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(34, 197, 94, 0.2);
     margin-top: 20px;
     text-align: left;
 }
@@ -158,10 +169,10 @@
 /* Architecture Flow (text-based) */
 .arch-flow {
     text-align: left;
-    background: rgba(66, 185, 131, 0.08);
+    background: rgba(34, 197, 94, 0.05);
     padding: 20px 25px;
-    border-radius: 10px;
-    border: 1px solid rgba(66, 185, 131, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(34, 197, 94, 0.15);
 }
 .arch-flow p {
     margin-bottom: 10px;
@@ -171,15 +182,15 @@
     margin-bottom: 0;
 }
 .arch-flow strong {
-    color: #42b983;
+    color: var(--green);
 }
 
 /* Onboarding Cards */
 .onboarding-card {
-    background: rgba(66, 185, 131, 0.2);
+    background: rgba(34, 197, 94, 0.15);
     padding: 20px 30px;
-    border-radius: 10px;
-    border: 1px solid rgba(66, 185, 131, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(34, 197, 94, 0.2);
     text-align: center;
 }
 .onboarding-card .emoji {
@@ -210,14 +221,14 @@
     margin-top: 20px;
 }
 .tech-item {
-    background: rgba(66, 185, 131, 0.15);
+    background: rgba(34, 197, 94, 0.1);
     padding: 15px;
     border-radius: 8px;
-    border: 1px solid rgba(66, 185, 131, 0.3);
+    border: 1px solid rgba(34, 197, 94, 0.2);
     font-size: 0.75em;
 }
 .tech-item strong {
-    color: #fff;
+    color: var(--light);
     display: block;
     margin-bottom: 5px;
 }
@@ -230,21 +241,21 @@
     margin-top: 30px;
 }
 .result-item {
-    background: linear-gradient(135deg, rgba(66, 185, 131, 0.2), rgba(66, 185, 131, 0.05));
+    background: rgba(34, 197, 94, 0.1);
     padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(66, 185, 131, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(34, 197, 94, 0.2);
 }
 .result-number {
     display: block;
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: bold;
-    color: #42b983;
+    color: var(--green);
 }
 .result-label {
     display: block;
     font-size: 0.7em;
-    color: #ccc;
+    color: var(--gray);
     margin-top: 5px;
 }
 
@@ -262,11 +273,11 @@
 
 /* Progress bar */
 .reveal .progress { height: 3px; background: rgba(255,255,255,0.1); }
-.reveal .progress span { background: #42b983; }
+.reveal .progress span { background: var(--green); }
 
 /* Slide numbers */
 .reveal .slide-number {
-    color: #42b983;
+    color: var(--green);
     font-size: 12px;
     background: transparent;
 }
@@ -287,10 +298,10 @@
 .repo-links {
     margin-top: 30px;
     text-align: left;
-    background: rgba(66, 185, 131, 0.1);
+    background: rgba(34, 197, 94, 0.1);
     padding: 20px 25px;
-    border-radius: 10px;
-    border: 1px solid rgba(66, 185, 131, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(34, 197, 94, 0.2);
 }
 .repo-links p {
     margin-bottom: 10px;

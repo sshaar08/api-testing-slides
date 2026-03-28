@@ -28,11 +28,11 @@
                 <h2>The Problem</h2>
                 <div class="sbi-container">
                     <div class="sbi-item fragment fade-up">
-                        <span class="sbi-label" style="background: #e74c3c;">Situation</span>
+                        <span class="sbi-label" style="background: var(--blue);">Situation</span>
                         <p>1800+ microservices, growing fast. 5-7 manual QA engineers, only 4 SDETs total.</p>
                     </div>
                     <div class="sbi-item fragment fade-up">
-                        <span class="sbi-label" style="background: #f39c12;">Behavior</span>
+                        <span class="sbi-label" style="background: var(--amber);">Behavior</span>
                         <ul>
                             <li><strong>Java monolith</strong> — only 2 SDETs could maintain it</li>
                             <li><strong>No CI pipeline</strong> — tests ran manually, bi-weekly at best</li>
@@ -40,7 +40,7 @@
                         </ul>
                     </div>
                     <div class="sbi-item fragment fade-up">
-                        <span class="sbi-label" style="background: #9b59b6;">Impact</span>
+                        <span class="sbi-label" style="background: var(--purple);">Impact</span>
                         <ul>
                             <li>Testing was a <strong>bottleneck</strong> for releases</li>
                             <li>Broken APIs caught <strong>hours to days</strong> after deploy</li>
@@ -49,7 +49,7 @@
                         </ul>
                     </div>
                 </div>
-                <p class="fragment fade-up" style="color: #42b983; font-size: 0.75em; margin-top: 20px;">
+                <p class="fragment fade-up" style="color: var(--green); font-size: 0.75em; margin-top: 20px;">
                     <em>"We couldn't share the testing load because nobody else could touch the code."</em>
                 </p>
             </section>
@@ -95,7 +95,7 @@
             <!-- ========== SLIDE 5: DECISION PATH (Section 4) ========== -->
             <section>
                 <h2>Decision Path</h2>
-                <p style="font-size: 0.8em; color: #a8dadc; margin-bottom: 20px;">Why these technical decisions?</p>
+                <p style="font-size: 0.8em; color: var(--gray); margin-bottom: 20px;">Why these technical decisions?</p>
                 <div class="two-columns" style="font-size: 0.7em;">
                     <div class="column">
                         <div class="decision fragment fade-up">
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     <div class="column fragment fade-up">
-                        <p style="color: #42b983; font-weight: bold; margin-bottom: 5px;">Example: Login Pattern</p>
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Example: Login Pattern</p>
                         <pre style="font-size: 0.55em; margin: 0; text-align: left;"><code>// 5 lines to login
 const { token } = await auth.login({
   email: 'user@test.com',
@@ -136,8 +136,85 @@ client.setToken(token);</code></pre>
                     <p>💡 <strong>Other ICs</strong> (knew JS) contributed within <strong>2 weeks</strong></p>
                     <p>💡 <strong>Manual QA</strong> posted crash course on automation + shell basics</p>
                 </div>
-                <p class="fragment fade-up" style="color: #42b983; margin-top: 25px;">
+                <p class="fragment fade-up" style="color: var(--green); margin-top: 25px;">
                     <strong>Result:</strong> Testing load distributed across the team
+                </p>
+            </section>
+
+            <!-- ========== SLIDE 6.5: THE PILOT (NEW) ========== -->
+            <section>
+                <h2>The Pilot: Contacts Team</h2>
+                <div class="sbi-container">
+                    <div class="sbi-item fragment fade-up">
+                        <span class="sbi-label" style="background: var(--amber);">Why Them</span>
+                        <p>Contacts team had the <strong>worst broken deployment record</strong>. Staging was constantly down.</p>
+                    </div>
+                    <div class="sbi-item fragment fade-up">
+                        <span class="sbi-label" style="background: var(--blue);">What I Did</span>
+                        <p>Targeted them as <strong>proof-of-concept</strong>. Built framework → showed them first.</p>
+                    </div>
+                    <div class="sbi-item fragment fade-up">
+                        <span class="sbi-label" style="background: var(--green);">Result</span>
+                        <p>Contacts team went from <strong>worst offender</strong> to <strong>least offender</strong> for broken deployments.</p>
+                    </div>
+                </div>
+                <p class="fragment fade-up" style="margin-top: 20px; font-size: 0.8em; color: var(--light);">
+                    <em>This became the proof point for getting other teams on board.</em>
+                </p>
+            </section>
+
+            <!-- ========== SLIDE 6.6: ADOPTION STRATEGY (NEW) ========== -->
+            <section>
+                <h2>Adoption Strategy</h2>
+                <p style="font-size: 0.75em; color: var(--gray); margin-bottom: 15px;">How we went from POC to org-wide adoption</p>
+                <div class="two-columns" style="font-size: 0.75em;">
+                    <div class="column fragment fade-up">
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 10px;">🎓 Enable, Don't Depend</p>
+                        <ul style="line-height: 1.6;">
+                            <li><strong>30-min Lunch & Learn</strong> — quick, accessible intro</li>
+                            <li><strong>Confluence documentation</strong> — self-service forever</li>
+                            <li><strong>Boilerplates</strong> — copy-paste to get started</li>
+                            <li><strong>Embedded QA migrated tests</strong> — teams owned their tests</li>
+                        </ul>
+                    </div>
+                    <div class="column fragment fade-up">
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 10px;">📊 Impact at Scale</p>
+                        <div class="results-grid" style="gap: 15px; margin-top: 10px;">
+                            <div class="result-item" style="padding: 15px;">
+                                <span class="result-number" style="font-size: 1.5em;">10+</span>
+                                <span class="result-label">Teams adopted</span>
+                            </div>
+                            <div class="result-item" style="padding: 15px;">
+                                <span class="result-number" style="font-size: 1.5em;">100s</span>
+                                <span class="result-label">Tests written</span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; font-size: 0.7em;">
+                            QA + SDETs became <strong>same skillset</strong>, different seniority levels
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 6.7: OVERCOMING RESISTANCE (NEW) ========== -->
+            <section>
+                <h2>Overcoming Resistance</h2>
+                <div class="sbi-container">
+                    <div class="sbi-item fragment fade-up">
+                        <span class="sbi-label" style="background: var(--red);">The Perception</span>
+                        <p>"<strong>Testing in sprint = less scope being delivered</strong>" — managers saw testing as overhead</p>
+                    </div>
+                    <div class="sbi-item fragment fade-up">
+                        <span class="sbi-label" style="background: var(--amber);">The Reality</span>
+                        <p>Teams with early testing <strong>delivered more on time</strong> because of fewer bugs and less tech debt from pre-testing</p>
+                    </div>
+                    <div class="sbi-item fragment fade-up">
+                        <span class="sbi-label" style="background: var(--green);">The Shift</span>
+                        <p>Proved that testing <strong>accelerates delivery</strong>, not slows it. Changed how leadership thought about QA investment.</p>
+                    </div>
+                </div>
+                <p class="fragment fade-up" style="margin-top: 20px; font-size: 0.8em; color: var(--light);">
+                    <em>Reactive detection (QA reports issues) → Proactive prevention (tests catch issues before staging)</em>
                 </p>
             </section>
 
@@ -146,7 +223,7 @@ client.setToken(token);</code></pre>
                 <h2>What I Built</h2>
                 <div class="two-columns" style="font-size: 0.75em;">
                     <div class="column fragment fade-up">
-                        <p style="color: #42b983; font-weight: bold;">Owned & Built</p>
+                        <p style="color: var(--green); font-weight: bold;">Owned & Built</p>
                         <ul style="line-height: 1.6;">
                             <li><strong>API Framework</strong> — 2-3 sprints</li>
                             <li><strong>Auth abstraction</strong> — JWT, API Key, Basic Auth</li>
@@ -160,7 +237,7 @@ client.setToken(token);</code></pre>
                         </p>
                     </div>
                     <div class="column fragment fade-up">
-                        <p style="color: #42b983; font-weight: bold; margin-bottom: 5px;">Adapter Pattern</p>
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Adapter Pattern</p>
                         <pre style="font-size: 0.5em; margin: 0 0 10px 0; text-align: left;"><code>// adapters/posts.js - Clean API abstraction
 const postsClient = axios.create({
   baseURL: `${config.baseUrl}/posts`,
@@ -183,10 +260,10 @@ module.exports = { getById, create, ... };</code></pre>
             <!-- ========== SLIDE 7.5: TEST EXAMPLE (NEW) ========== -->
             <section>
                 <h2>Writing a Test</h2>
-                <p style="font-size: 0.75em; color: #a8dadc; margin-bottom: 15px;">How simple is it to write a test?</p>
+                <p style="font-size: 0.75em; color: var(--gray); margin-bottom: 15px;">How simple is it to write a test?</p>
                 <div class="two-columns" style="font-size: 0.7em;">
                     <div class="column fragment fade-up">
-                        <p style="color: #42b983; font-weight: bold;">A Complete Test (10 lines)</p>
+                        <p style="color: var(--green); font-weight: bold;">A Complete Test (10 lines)</p>
                         <pre style="font-size: 0.5em; margin: 0; text-align: left;"><code>const { handleRequest } = require('api-test-core');
 const { posts } = require('api-test-core');
 
@@ -211,7 +288,7 @@ describe('Posts API', () => {
 });</code></pre>
                     </div>
                     <div class="column fragment fade-up">
-                        <p style="color: #42b983; font-weight: bold;">Helper Functions</p>
+                        <p style="color: var(--green); font-weight: bold;">Helper Functions</p>
                         <pre style="font-size: 0.5em; margin: 0; text-align: left;"><code>// Test data generation
 const { generateUserData, generateEmail } = 
   require('api-test-core');
@@ -234,8 +311,8 @@ const user = generateUserData({
                 <h2>System Architecture</h2>
                 <div class="two-columns" style="font-size: 0.7em;">
                     <div class="column">
-                        <p style="font-size: 0.7em; color: #a8dadc; margin-bottom: 10px;">
-                            <a href="images/full-architecture.png" target="_blank" style="color: #42b983;">View full diagram →</a>
+                        <p style="font-size: 0.7em; color: var(--gray); margin-bottom: 10px;">
+                            <a href="images/full-architecture.png" target="_blank" style="color: var(--green);">View full diagram →</a>
                         </p>
                         <div class="arch-flow fragment fade-up" style="font-size: 0.85em;">
                             <p><strong>1.</strong> Dev commits to GitHub</p>
@@ -249,7 +326,7 @@ const user = generateUserData({
                         </div>
                     </div>
                     <div class="column fragment fade-up">
-                        <p style="color: #42b983; font-weight: bold; margin-bottom: 5px;">GitHub → CircleCI Trigger</p>
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">GitHub → CircleCI Trigger</p>
                         <pre style="font-size: 0.45em; margin: 0; text-align: left;"><code>// GitHub Actions POST to CircleCI
 curl -X POST "https://circleci.com/api/v2/project/..."
   -H "Circle-Token: ${CIRCLECI_TOKEN}"
@@ -279,7 +356,7 @@ curl -X POST "https://circleci.com/api/v2/project/..."
                         <p class="fragment fade-up"><strong>GitHub PR status</strong> updated automatically</p>
                     </div>
                     <div class="column fragment fade-up">
-                        <p style="color: #42b983; font-weight: bold; margin-bottom: 5px;">CircleCI Job Definition</p>
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">CircleCI Job Definition</p>
                         <pre style="font-size: 0.45em; margin: 0; text-align: left;"><code>jobs:
   integration-tests:
     docker:
@@ -298,27 +375,27 @@ curl -X POST "https://circleci.com/api/v2/project/..."
 
             <!-- ========== SLIDE 10: TRIGGER FLOW (Section 6) ========== -->
             <section data-background-color="#ffffff">
-                <h2 style="color: #1a1a2e;">Trigger Flow</h2>
+                <h2 style="color: #0f172a;">Trigger Flow</h2>
                 <img src="images/trigger-flow.png" alt="Trigger Flow Diagram" style="max-width: 100%; max-height: 50vh; border: none;">
                 <p style="font-size: 0.5em; margin-top: 10px;">
-                    <a href="images/trigger-flow.png" target="_blank" style="color: #42b983;">Open full size →</a>
+                    <a href="images/trigger-flow.png" target="_blank" style="color: var(--green);">Open full size →</a>
                 </p>
             </section>
 
             <!-- ========== SLIDE 11: TEAM ONBOARDING (Section 6) ========== -->
             <section>
                 <h2>Team Onboarding</h2>
-                <p style="font-size: 0.75em; color: #a8dadc; margin-bottom: 10px;">Manual QA had <strong>ZERO coding experience</strong></p>
+                <p style="font-size: 0.75em; color: var(--gray); margin-bottom: 10px;">Manual QA had <strong>ZERO coding experience</strong></p>
                 <div class="two-columns" style="font-size: 0.65em;">
                     <div class="column fragment fade-up">
-                        <p style="color: #e74c3c; font-weight: bold;">Before: What They Knew</p>
+                        <p style="color: var(--red); font-weight: bold;">Before: What They Knew</p>
                         <ul style="line-height: 1.5;">
                             <li>Zero coding experience</li>
                             <li>No Git knowledge</li>
                             <li>Never used terminal</li>
                             <li>Only manual testing</li>
                         </ul>
-                        <p style="margin-top: 15px; color: #42b983; font-weight: bold;">After: What They Learned</p>
+                        <p style="margin-top: 15px; color: var(--green); font-weight: bold;">After: What They Learned</p>
                         <ul style="line-height: 1.5;">
                             <li>Unix shell basics</li>
                             <li>Git & GitHub workflows</li>
@@ -327,7 +404,7 @@ curl -X POST "https://circleci.com/api/v2/project/..."
                         </ul>
                     </div>
                     <div class="column fragment fade-up">
-                        <p style="color: #42b983; font-weight: bold;">Training Approach</p>
+                        <p style="color: var(--green); font-weight: bold;">Training Approach</p>
                         <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 15px;">
                             <div class="onboarding-card">
                                 <span class="emoji">🍔</span>
@@ -340,70 +417,80 @@ curl -X POST "https://circleci.com/api/v2/project/..."
                                 <p style="font-size: 0.7em;">Hands-on sessions</p>
                             </div>
                         </div>
-                        <p style="font-size: 0.7em; color: #a8dadc;">
+                        <p style="font-size: 0.7em; color: var(--gray);">
                             Within 2 weeks, ICs who knew JS were contributing tests.
                         </p>
                     </div>
                 </div>
             </section>
 
-            <!-- ========== SLIDE 12: RESULTS (Section 7) ========== -->
+            <!-- ========== SLIDE 13: RESULTS (Section 7) ========== -->
             <section>
                 <h2>Results & Impact</h2>
-                <div class="results-grid">
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">Bi-weekly → On-demand</span>
-                        <span class="result-label">Regression runs tied to PRs</span>
+                <div class="two-columns" style="font-size: 0.75em;">
+                    <div class="column">
+                        <div class="results-grid" style="gap: 20px;">
+                            <div class="result-item fragment fade-up">
+                                <span class="result-number">Reactive → Proactive</span>
+                                <span class="result-label">Issues caught before staging</span>
+                            </div>
+                            <div class="result-item fragment fade-up">
+                                <span class="result-number">Bi-weekly → On-demand</span>
+                                <span class="result-label">Regression tied to PRs</span>
+                            </div>
+                            <div class="result-item fragment fade-up">
+                                <span class="result-number">QA + SDET = Same Role</span>
+                                <span class="result-label">Different seniority levels</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">Weekly → Multiple/day</span>
-                        <span class="result-label">Release cadence</span>
-                    </div>
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">Hours → Immediate</span>
-                        <span class="result-label">Feedback on broken APIs</span>
-                    </div>
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">QA Dependent → Self-service</span>
-                        <span class="result-label">Devs test during development</span>
+                    <div class="column fragment fade-up">
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 10px;">Cultural Shift</p>
+                        <ul style="line-height: 1.8;">
+                            <li>Devs test <strong>during development</strong></li>
+                            <li>QA → SDET skillset convergence</li>
+                            <li>Testing as <strong>enabler</strong>, not gate</li>
+                            <li>Self-service for all teams</li>
+                        </ul>
+                        <p style="margin-top: 20px; font-size: 0.75em;">
+                            <strong>10+ teams</strong> adopted • <strong>100s of tests</strong> written
+                        </p>
                     </div>
                 </div>
-                <p class="fragment fade-up" style="margin-top: 20px; font-size: 0.8em;">
-                    Testing load <strong>distributed</strong> across team • <strong>Self-service</strong> for developers
-                </p>
             </section>
 
-            <!-- ========== SLIDE 13: LESSONS LEARNED (Section 8) ========== -->
+            <!-- ========== SLIDE 14: LESSONS LEARNED (Section 8) ========== -->
             <section>
                 <h2>Lessons Learned</h2>
                 <div class="two-columns" style="font-size: 0.7em;">
                     <div class="column fragment fade-up">
-                        <p style="color: #42b983; font-weight: bold;">What Worked</p>
+                        <p style="color: var(--green); font-weight: bold;">What Worked</p>
                         <ul style="line-height: 1.6;">
                             <li>Choosing Node.js (team already knew it)</li>
                             <li>Abstracting auth complexity</li>
                             <li>Internal npm for distribution</li>
                             <li>Brown bag + individual training</li>
                             <li>Page Object Model pattern</li>
+                            <li>Pilot with proof-of-concept first</li>
                         </ul>
                     </div>
                     <div class="column fragment fade-up">
-                        <p style="color: #e74c3c; font-weight: bold;">What I'd Do Differently</p>
+                        <p style="color: var(--red); font-weight: bold;">What I'd Do Differently</p>
                         <ul style="line-height: 1.6;">
                             <li><strong>@latest broke teams</strong> — 1 person per team to fix</li>
-                            <li style="margin-top: 8px;"><em>Story: Released breaking change, all 6 teams had to stop what they were doing and fix their tests. Took 2-3 days of unplanned work.</em></li>
+                            <li style="margin-top: 8px;"><em>Released breaking change, all 6 teams had to stop and fix. Took 2-3 days of unplanned work.</em></li>
                             <li style="margin-top: 8px;">Pin to major version from day 1</li>
                             <li>Add changelog as part of release</li>
                             <li>Use code gen from day 1</li>
                         </ul>
                     </div>
                 </div>
-                <p class="fragment fade-up" style="margin-top: 15px; font-size: 0.7em; color: #a8dadc;">
+                <p class="fragment fade-up" style="margin-top: 15px; font-size: 0.7em; color: var(--gray);">
                     💡 <strong>First Node package</strong> — FE team helped with entry point vs folder imports
                 </p>
             </section>
 
-            <!-- ========== SLIDE 14: DISCUSSION ========== -->
+            <!-- ========== SLIDE 15: DISCUSSION ========== -->
             <section>
                 <h2>Discussion</h2>
                 <ol style="text-align: left; font-size: 0.8em;">
@@ -414,7 +501,7 @@ curl -X POST "https://circleci.com/api/v2/project/..."
                 </ol>
             </section>
 
-            <!-- ========== SLIDE 15: THANK YOU ========== -->
+            <!-- ========== SLIDE 16: THANK YOU ========== -->
             <section data-background-gradient="linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)">
                 <h1>Thank You</h1>
                 <p>Questions?</p>
