@@ -76,26 +76,31 @@
             <section>
                 <h2>Decision Path</h2>
                 <p style="font-size: 0.8em; color: #a8dadc; margin-bottom: 20px;">Why these technical decisions?</p>
-                <div class="decisions">
-                    <div class="decision fragment fade-up">
-                        <span class="decision-q">Why Node.js?</span>
-                        <span class="decision-a">Team already knew JavaScript - low learning curve</span>
+                <div class="two-columns" style="font-size: 0.7em;">
+                    <div class="column">
+                        <div class="decision fragment fade-up">
+                            <span class="decision-q">Why Node.js?</span>
+                            <span class="decision-a">Team already knew JavaScript - low learning curve</span>
+                        </div>
+                        <div class="decision fragment fade-up">
+                            <span class="decision-q">Why Page Object Model?</span>
+                            <span class="decision-a">Separation of concerns, maintainable, testable</span>
+                        </div>
+                        <div class="decision fragment fade-up">
+                            <span class="decision-q">Why npm package?</span>
+                            <span class="decision-a">Easy distribution, version control, quick updates</span>
+                        </div>
                     </div>
-                    <div class="decision fragment fade-up">
-                        <span class="decision-q">Why Page Object Model?</span>
-                        <span class="decision-a">Separation of concerns, maintainable, testable</span>
-                    </div>
-                    <div class="decision fragment fade-up">
-                        <span class="decision-q">Why SuperAgent?</span>
-                        <span class="decision-a">Lightweight, Promise-based, familiar API</span>
-                    </div>
-                    <div class="decision fragment fade-up">
-                        <span class="decision-q">Why npm package?</span>
-                        <span class="decision-a">Easy distribution, version control, quick updates</span>
-                    </div>
-                    <div class="decision fragment fade-up">
-                        <span class="decision-q">Why Thrift code gen?</span>
-                        <span class="decision-a">Single source of truth, Platform team owned the IDL</span>
+                    <div class="column fragment fade-up">
+                        <p style="color: #42b983; font-weight: bold; margin-bottom: 5px;">Example: Login Pattern</p>
+                        <pre style="font-size: 0.55em; margin: 0; text-align: left;"><code>// 5 lines to login
+const { token } = await auth.login({
+  email: 'user@test.com',
+  password: 'password123'
+});
+
+// Use token in requests
+client.setToken(token);</code></pre>
                     </div>
                 </div>
             </section>
@@ -119,28 +124,87 @@
             <!-- ========== SLIDE 7: WHAT I OWNED ========== -->
             <section>
                 <h2>What I Built</h2>
-                <div class="two-columns">
+                <div class="two-columns" style="font-size: 0.75em;">
                     <div class="column fragment fade-up">
                         <p style="color: #42b983; font-weight: bold;">Owned & Built</p>
-                        <ul>
-                            <li>Framework from scratch</li>
-                            <li>Helper functions (agents, contacts, experiments, roles)</li>
-                            <li>Auth abstraction layer</li>
-                            <li>Dockerfile for the framework</li>
-                            <li>CircleCI workflows</li>
-                            <li>Team onboarding</li>
+                        <ul style="line-height: 1.6;">
+                            <li><strong>API Framework</strong> — 2-3 sprints</li>
+                            <li><strong>Auth abstraction</strong> — JWT, API Key, Basic Auth</li>
+                            <li><strong>Helper functions</strong> — test data generation</li>
+                            <li><strong>Dockerfile</strong> — 2 weeks</li>
+                            <li><strong>CircleCI workflows</strong> — 1 week</li>
+                            <li><strong>Team onboarding</strong> — brown bags + 1:1</li>
                         </ul>
+                        <p style="margin-top: 15px; font-size: 0.7em;">
+                            <strong>Code:</strong> <a href="https://github.com/sshaar08/api-testing-framework" target="_blank">api-testing-framework</a>
+                        </p>
                     </div>
                     <div class="column fragment fade-up">
-                        <p style="color: #e74c3c; font-weight: bold;">Code References</p>
-                        <ul style="font-size: 0.65em; line-height: 1.8;">
-                            <li><a href="https://github.com/sshaar08/api-testing-framework" target="_blank">github.com/sshaar08/api-testing-framework</a></li>
-                            <li><a href="https://github.com/sshaar08/api-testing-framework/blob/main/index.js" target="_blank">index.js</a> — Framework entry</li>
-                            <li><a href="https://github.com/sshaar08/api-testing-framework/blob/main/common/authentication.js" target="_blank">common/authentication.js</a></li>
-                            <li><a href="https://github.com/sshaar08/api-testing-framework/blob/main/common/helper.js" target="_blank">common/helper.js</a></li>
-                            <li><a href="https://github.com/sshaar08/api-testing-framework/blob/main/docker/Dockerfile" target="_blank">docker/Dockerfile</a></li>
-                            <li><a href="https://github.com/sshaar08/api-testing-framework/blob/main/.circleci/config.yml" target="_blank">.circleci/config.yml</a></li>
-                        </ul>
+                        <p style="color: #42b983; font-weight: bold; margin-bottom: 5px;">Adapter Pattern</p>
+                        <pre style="font-size: 0.5em; margin: 0 0 10px 0; text-align: left;"><code>// adapters/posts.js - Clean API abstraction
+const postsClient = axios.create({
+  baseURL: `${config.baseUrl}/posts`,
+  timeout: config.requestTimeout,
+});
+
+async function getById(id) {
+  return postsClient.get(`/${id}`);
+}
+
+async function create(postData) {
+  return postsClient.post('/', postData);
+}
+
+module.exports = { getById, create, ... };</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 7.5: TEST EXAMPLE (NEW) ========== -->
+            <section>
+                <h2>Writing a Test</h2>
+                <p style="font-size: 0.75em; color: #a8dadc; margin-bottom: 15px;">How simple is it to write a test?</p>
+                <div class="two-columns" style="font-size: 0.7em;">
+                    <div class="column fragment fade-up">
+                        <p style="color: #42b983; font-weight: bold;">A Complete Test (10 lines)</p>
+                        <pre style="font-size: 0.5em; margin: 0; text-align: left;"><code>const { handleRequest } = require('api-test-core');
+const { posts } = require('api-test-core');
+
+describe('Posts API', () => {
+  it('should create and retrieve a post', async () => {
+    // Create test data
+    const testPost = {
+      title: 'My Test Post',
+      body: 'Test content',
+      userId: 1
+    };
+    
+    // Make request (auth handled automatically)
+    const response = await handleRequest(
+      posts.create(testPost)
+    );
+    
+    // Assert
+    expect(response.status).to.equal(201);
+    expect(response.data.title).to.equal(testPost.title);
+  });
+});</code></pre>
+                    </div>
+                    <div class="column fragment fade-up">
+                        <p style="color: #42b983; font-weight: bold;">Helper Functions</p>
+                        <pre style="font-size: 0.5em; margin: 0; text-align: left;"><code>// Test data generation
+const { generateUserData, generateEmail } = 
+  require('api-test-core');
+
+// Generate unique test user
+const user = generateUserData({
+  email: generateEmail('test'),
+  firstName: 'John'
+});
+// → { id, email, firstName, lastName, phone, ... }</code></pre>
+                        <p style="margin-top: 15px; font-size: 0.6em;">
+                            <a href="https://github.com/sshaar08/api-testing-framework/blob/main/api-test-core/src/agents.test.js" target="_blank">View full test example →</a>
+                        </p>
                     </div>
                 </div>
             </section>
@@ -148,38 +212,68 @@
             <!-- ========== SLIDE 8: SYSTEM ARCHITECTURE (Section 6) ========== -->
             <section>
                 <h2>System Architecture</h2>
-                <p style="font-size: 0.7em; color: #a8dadc; margin-bottom: 15px;">
-                    <a href="images/full-architecture.png" target="_blank" style="color: #42b983;">View full diagram →</a>
-                </p>
-                <div class="arch-flow fragment fade-up">
-                    <p><strong>1. Dev writes code</strong> → commits to GitHub</p>
-                    <p><strong>2. Label PR</strong> with <code>deployAndRunTests</code></p>
-                    <p><strong>3. GitHub Actions</strong> → POST to CircleCI API</p>
-                    <p><strong>4. CircleCI</strong> pulls Docker image from Nexus</p>
-                    <p><strong>5. Container runs</strong> → pulls npm from Artifactory</p>
-                    <p><strong>6. Mocha</strong> executes tests</p>
-                    <p><strong>7. JUnit XML</strong> → uploaded to S3</p>
-                    <p><strong>8. GitHub PR</strong> updated with pass/fail</p>
+                <div class="two-columns" style="font-size: 0.7em;">
+                    <div class="column">
+                        <p style="font-size: 0.7em; color: #a8dadc; margin-bottom: 10px;">
+                            <a href="images/full-architecture.png" target="_blank" style="color: #42b983;">View full diagram →</a>
+                        </p>
+                        <div class="arch-flow fragment fade-up" style="font-size: 0.85em;">
+                            <p><strong>1.</strong> Dev commits to GitHub</p>
+                            <p><strong>2.</strong> Label PR: <code>deployAndRunTests</code></p>
+                            <p><strong>3.</strong> GitHub Actions → CircleCI API</p>
+                            <p><strong>4.</strong> CircleCI pulls Docker from Nexus</p>
+                            <p><strong>5.</strong> Container pulls npm from Artifactory</p>
+                            <p><strong>6.</strong> Mocha executes tests</p>
+                            <p><strong>7.</strong> JUnit XML → S3</p>
+                            <p><strong>8.</strong> GitHub PR updated</p>
+                        </div>
+                    </div>
+                    <div class="column fragment fade-up">
+                        <p style="color: #42b983; font-weight: bold; margin-bottom: 5px;">GitHub → CircleCI Trigger</p>
+                        <pre style="font-size: 0.45em; margin: 0; text-align: left;"><code>// GitHub Actions POST to CircleCI
+curl -X POST "https://circleci.com/api/v2/project/..."
+  -H "Circle-Token: ${CIRCLECI_TOKEN}"
+  -d '{
+    "branch": "feature/my-branch",
+    "parameters": {
+      "service_name": "api-test-core",
+      "run_integration_tests": true
+    }
+  }'</code></pre>
+                        <p style="margin-top: 10px; font-size: 0.55em;">
+                            <a href="https://github.com/sshaar08/api-testing-framework/blob/main/api-test-core/.github/workflows/pr-label-trigger.yml" target="_blank">View full workflow →</a>
+                        </p>
+                    </div>
                 </div>
-                <p class="fragment fade-up" style="margin-top: 15px; font-size: 0.65em;">
-                    <strong>Code:</strong> <a href="https://github.com/sshaar08/api-testing-framework/blob/main/.github/workflows/pr-label-trigger.yml" target="_blank">GitHub Actions trigger</a> · 
-                    <a href="https://github.com/sshaar08/api-testing-framework/blob/main/.circleci/config.yml" target="_blank">CircleCI config</a> · 
-                    <a href="https://github.com/sshaar08/api-testing-framework/blob/main/docker/Dockerfile" target="_blank">Dockerfile</a>
-                </p>
             </section>
 
             <!-- ========== SLIDE 9: CI/CD PIPELINE (Section 6) ========== -->
             <section>
                 <h2>CI/CD Pipeline</h2>
-                <p class="fragment fade-up"><strong>Docker</strong> image from Nexus (no deps baked in)</p>
-                <p class="fragment fade-up"><strong>npm packages</strong> pulled from Artifactory at runtime</p>
-                <p class="fragment fade-up"><strong>CircleCI</strong> jobs: smoke, integration, nightly</p>
-                <p class="fragment fade-up"><strong>JUnit XML</strong> uploaded to S3 data lake</p>
-                <p class="fragment fade-up"><strong>GitHub PR status</strong> updated automatically</p>
-                <p class="fragment fade-up"><strong>Merge protection</strong> optional blocking</p>
-                <p class="fragment fade-up" style="margin-top: 20px; font-size: 0.7em;">
-                    <a href="https://github.com/sshaar08/api-testing-framework/tree/main/common" target="_blank">View helper code →</a>
-                </p>
+                <div class="two-columns" style="font-size: 0.7em;">
+                    <div class="column">
+                        <p class="fragment fade-up"><strong>Docker</strong> image from Nexus (no deps baked in)</p>
+                        <p class="fragment fade-up"><strong>npm packages</strong> pulled from Artifactory at runtime</p>
+                        <p class="fragment fade-up"><strong>CircleCI jobs:</strong> smoke, integration, nightly</p>
+                        <p class="fragment fade-up"><strong>JUnit XML</strong> uploaded to S3 data lake</p>
+                        <p class="fragment fade-up"><strong>GitHub PR status</strong> updated automatically</p>
+                    </div>
+                    <div class="column fragment fade-up">
+                        <p style="color: #42b983; font-weight: bold; margin-bottom: 5px;">CircleCI Job Definition</p>
+                        <pre style="font-size: 0.45em; margin: 0; text-align: left;"><code>jobs:
+  integration-tests:
+    docker:
+      - image: nexus.company.com/api-test-core:2.1.0
+    steps:
+      - configure-artifactory
+      - install-packages
+      - run-integration-tests
+      - upload-to-s3</code></pre>
+                        <p style="margin-top: 10px; font-size: 0.55em;">
+                            <a href="https://github.com/sshaar08/api-testing-framework/blob/main/api-test-core/.circleci/config.yml" target="_blank">View full config →</a>
+                        </p>
+                    </div>
+                </div>
             </section>
 
             <!-- ========== SLIDE 10: TRIGGER FLOW (Section 6) ========== -->
@@ -194,24 +288,43 @@
             <!-- ========== SLIDE 11: TEAM ONBOARDING (Section 6) ========== -->
             <section>
                 <h2>Team Onboarding</h2>
-                <p class="fragment fade-up">Manual QA had <strong>ZERO coding experience</strong></p>
-                <p class="fragment fade-up">Started from <strong>Unix shell basics</strong></p>
-                <p class="fragment fade-up">Learned <strong>Git</strong> from scratch</p>
-                <div class="fragment fade-up" style="margin-top: 30px; display: flex; gap: 30px; justify-content: center;">
-                    <div class="onboarding-card">
-                        <span class="emoji">🍔</span>
-                        <p><strong>Brown Bag Sessions</strong></p>
-                        <p style="font-size: 0.65em;">Team-wide awareness</p>
+                <p style="font-size: 0.75em; color: #a8dadc; margin-bottom: 10px;">Manual QA had <strong>ZERO coding experience</strong></p>
+                <div class="two-columns" style="font-size: 0.65em;">
+                    <div class="column fragment fade-up">
+                        <p style="color: #e74c3c; font-weight: bold;">Before: What They Knew</p>
+                        <ul style="line-height: 1.5;">
+                            <li>Zero coding experience</li>
+                            <li>No Git knowledge</li>
+                            <li>Never used terminal</li>
+                            <li>Only manual testing</li>
+                        </ul>
+                        <p style="margin-top: 15px; color: #42b983; font-weight: bold;">After: What They Learned</p>
+                        <ul style="line-height: 1.5;">
+                            <li>Unix shell basics</li>
+                            <li>Git & GitHub workflows</li>
+                            <li>Wrote tests in JavaScript</li>
+                            <li>Self-serve without me</li>
+                        </ul>
                     </div>
-                    <div class="onboarding-card">
-                        <span class="emoji">👤</span>
-                        <p><strong>Individual Training</strong></p>
-                        <p style="font-size: 0.65em;">1-on-1 hands-on</p>
+                    <div class="column fragment fade-up">
+                        <p style="color: #42b983; font-weight: bold;">Training Approach</p>
+                        <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 15px;">
+                            <div class="onboarding-card">
+                                <span class="emoji">🍔</span>
+                                <p><strong>Brown Bags</strong></p>
+                                <p style="font-size: 0.7em;">Team-wide awareness</p>
+                            </div>
+                            <div class="onboarding-card">
+                                <span class="emoji">👤</span>
+                                <p><strong>1-on-1 Training</strong></p>
+                                <p style="font-size: 0.7em;">Hands-on sessions</p>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.7em; color: #a8dadc;">
+                            Within 2 weeks, ICs who knew JS were contributing tests.
+                        </p>
                     </div>
                 </div>
-                <p class="fragment fade-up" style="margin-top: 20px; color: #42b983;">
-                    Team could <strong>self-serve</strong> without depending on me
-                </p>
             </section>
 
             <!-- ========== SLIDE 12: RESULTS (Section 7) ========== -->
@@ -243,28 +356,30 @@
             <!-- ========== SLIDE 13: LESSONS LEARNED (Section 8) ========== -->
             <section>
                 <h2>Lessons Learned</h2>
-                <div class="lessons">
-                    <div class="lesson fragment fade-up">
+                <div class="two-columns" style="font-size: 0.7em;">
+                    <div class="column fragment fade-up">
                         <p style="color: #42b983; font-weight: bold;">What Worked</p>
-                        <ul>
-                            <li>Choosing Node.js (team knew it)</li>
+                        <ul style="line-height: 1.6;">
+                            <li>Choosing Node.js (team already knew it)</li>
                             <li>Abstracting auth complexity</li>
                             <li>Internal npm for distribution</li>
                             <li>Brown bag + individual training</li>
+                            <li>Page Object Model pattern</li>
                         </ul>
                     </div>
-                    <div class="lesson fragment fade-up">
+                    <div class="column fragment fade-up">
                         <p style="color: #e74c3c; font-weight: bold;">What I'd Do Differently</p>
-                        <ul>
-                            <li><strong>@latest broke teams</strong> - took 1 person/team to fix</li>
-                            <li>Pin to major version from day 1</li>
-                            <li>Use code gen from day 1</li>
+                        <ul style="line-height: 1.6;">
+                            <li><strong>@latest broke teams</strong> — 1 person per team to fix</li>
+                            <li style="margin-top: 8px;"><em>Story: Released breaking change, all 6 teams had to stop what they were doing and fix their tests. Took 2-3 days of unplanned work.</em></li>
+                            <li style="margin-top: 8px;">Pin to major version from day 1</li>
                             <li>Add changelog as part of release</li>
+                            <li>Use code gen from day 1</li>
                         </ul>
                     </div>
                 </div>
-                <p class="fragment fade-up" style="margin-top: 20px; font-size: 0.75em; color: #a8dadc;">
-                    💡 <strong>First Node package</strong> - FE team helped with entry point vs folder imports
+                <p class="fragment fade-up" style="margin-top: 15px; font-size: 0.7em; color: #a8dadc;">
+                    💡 <strong>First Node package</strong> — FE team helped with entry point vs folder imports
                 </p>
             </section>
 
