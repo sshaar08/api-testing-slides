@@ -26,32 +26,14 @@
             <!-- ========== SLIDE 2: PROBLEM OVERVIEW (Section 1) ========== -->
             <section>
                 <h2>The Problem</h2>
-                <div class="sbi-container">
-                    <div class="sbi-item fragment fade-up">
-                        <span class="sbi-label" style="background: var(--blue);">Situation</span>
-                        <p>1800+ microservices, growing fast. 5-7 manual QA engineers, only 4 SDETs total.</p>
-                    </div>
-                    <div class="sbi-item fragment fade-up">
-                        <span class="sbi-label" style="background: var(--amber);">Behavior</span>
-                        <ul>
-                            <li><strong>Java monolith</strong> — only 2 SDETs could maintain it</li>
-                            <li><strong>No CI pipeline</strong> — tests ran manually, bi-weekly at best</li>
-                            <li><strong>Zero automation culture</strong> — QA couldn't write code</li>
-                        </ul>
-                    </div>
-                    <div class="sbi-item fragment fade-up">
-                        <span class="sbi-label" style="background: var(--purple);">Impact</span>
-                        <ul>
-                            <li>Testing was a <strong>bottleneck</strong> for releases</li>
-                            <li>Broken APIs caught <strong>hours to days</strong> after deploy</li>
-                            <li>5-7 QA engineers <strong>couldn't contribute</strong></li>
-                            <li>Releases <strong>piled up</strong> waiting for QA sign-off</li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="fragment fade-up" style="color: var(--green); font-size: 0.75em; margin-top: 20px;">
-                    <em>"We couldn't share the testing load because nobody else could touch the code."</em>
-                </p>
+                <ul style="font-size: 0.8em; line-height: 1.8; text-align: left; max-width: 900px; margin: 0 auto;">
+                    <li class="fragment fade-up"><strong>1800+ microservices</strong> growing fast, only 4 SDETs</li>
+                    <li class="fragment fade-up">Java monolith — only 2 people could maintain tests</li>
+                    <li class="fragment fade-up">No CI pipeline — bi-weekly manual regression cycles</li>
+                    <li class="fragment fade-up">5-7 QA engineers couldn't write code</li>
+                    <li class="fragment fade-up">Testing blocked releases — <strong>3-day regression cycles</strong></li>
+                    <li class="fragment fade-up">Broken APIs caught <strong>hours to days</strong> after deploy</li>
+                </ul>
             </section>
 
             <!-- ========== SLIDE 3: ROLE & TEAM CONTEXT (Section 2) ========== -->
@@ -426,34 +408,38 @@ curl -X POST "https://circleci.com/api/v2/project/..."
             <!-- ========== SLIDE 13: RESULTS (Section 7) ========== -->
             <section>
                 <h2>Results & Impact</h2>
-                <div class="two-columns" style="font-size: 0.75em;">
-                    <div class="column">
-                        <div class="results-grid" style="gap: 20px;">
-                            <div class="result-item fragment fade-up">
-                                <span class="result-number">Reactive → Proactive</span>
-                                <span class="result-label">Issues caught before staging</span>
-                            </div>
-                            <div class="result-item fragment fade-up">
-                                <span class="result-number">Bi-weekly → On-demand</span>
-                                <span class="result-label">Regression tied to PRs</span>
-                            </div>
-                            <div class="result-item fragment fade-up">
-                                <span class="result-number">QA + SDET = Same Role</span>
-                                <span class="result-label">Different seniority levels</span>
-                            </div>
-                        </div>
+                <div class="results-grid" style="font-size: 0.8em; gap: 25px;">
+                    <div class="result-item fragment fade-up">
+                        <span class="result-number">3-day → 4 hours</span>
+                        <span class="result-label">Regression cycles</span>
                     </div>
-                    <div class="column fragment fade-up">
-                        <p style="color: var(--green); font-weight: bold; margin-bottom: 10px;">Cultural Shift</p>
-                        <ul style="line-height: 1.8;">
-                            <li>Devs test <strong>during development</strong></li>
-                            <li>QA → SDET skillset convergence</li>
-                            <li>Testing as <strong>enabler</strong>, not gate</li>
-                            <li>Self-service for all teams</li>
-                        </ul>
-                        <p style="margin-top: 20px; font-size: 0.75em;">
-                            <strong>10+ teams</strong> adopted • <strong>100s of tests</strong> written
-                        </p>
+                    <div class="result-item fragment fade-up">
+                        <span class="result-number">Hours/days → Immediate</span>
+                        <span class="result-label">Bug detection</span>
+                    </div>
+                    <div class="result-item fragment fade-up">
+                        <span class="result-number">100+ hrs/month</span>
+                        <span class="result-label">Manual testing saved</span>
+                    </div>
+                    <div class="result-item fragment fade-up">
+                        <span class="result-number">Bi-weekly → On-demand</span>
+                        <span class="result-label">Via PR labels</span>
+                    </div>
+                    <div class="result-item fragment fade-up">
+                        <span class="result-number">80% → 80%</span>
+                        <span class="result-label">Manual → Automated coverage</span>
+                    </div>
+                    <div class="result-item fragment fade-up">
+                        <span class="result-number">Zero critical bugs</span>
+                        <span class="result-label">For 6 months</span>
+                    </div>
+                    <div class="result-item fragment fade-up">
+                        <span class="result-number">40% faster</span>
+                        <span class="result-label">Test execution</span>
+                    </div>
+                    <div class="result-item fragment fade-up">
+                        <span class="result-number">10+ teams</span>
+                        <span class="result-label">Adopted framework</span>
                     </div>
                 </div>
             </section>
