@@ -27,12 +27,16 @@
             <section>
                 <h2>The Problem</h2>
                 <ul style="font-size: 0.8em; line-height: 1.8; text-align: left; max-width: 900px; margin: 0 auto;">
-                    <li class="fragment fade-up"><strong>1800+ microservices</strong> growing fast, only 4 SDETs</li>
-                    <li class="fragment fade-up">Java monolith — only 2 people could maintain tests</li>
-                    <li class="fragment fade-up">No CI pipeline — bi-weekly manual regression cycles</li>
-                    <li class="fragment fade-up">5-7 QA engineers couldn't write code</li>
-                    <li class="fragment fade-up">Testing blocked releases — <strong>3-day regression cycles</strong></li>
-                    <li class="fragment fade-up">Broken APIs caught <strong>hours to days</strong> after deploy</li>
+                    <div class="fragment fade-up">
+                        <li><strong>1800+ microservices</strong> growing fast, only 4 SDETs</li>
+                        <li>Java monolith — only 2 people could maintain tests</li>
+                        <li>5-7 QA engineers couldn't write code</li>
+                    </div>
+                    <div class="fragment fade-up">
+                        <li>No CI pipeline — bi-weekly manual regression cycles</li>
+                        <li>Testing blocked releases — <strong>3-day regression cycles</strong></li>
+                        <li>Broken APIs caught <strong>hours to days</strong> after deploy</li>
+                    </div>
                 </ul>
             </section>
 
@@ -57,50 +61,48 @@
                         <span class="context-value">Expand testing capacity</span>
                     </div>
                 </div>
-                <p class="fragment fade-up" style="margin-top: 30px; font-size: 0.75em;">
-                    I was the <strong>technical lead</strong> for API testing infrastructure
-                </p>
             </section>
 
             <!-- ========== SLIDE 4: CHALLENGES (Section 3) ========== -->
             <section>
                 <h2>Challenges & Constraints</h2>
                 <div class="challenges-list">
-                    <p class="fragment fade-up">❌ Manual QA had <strong>ZERO coding experience</strong></p>
-                    <p class="fragment fade-up">❌ Java monolith was <strong>brittle</strong> - only 2 people could maintain</p>
-                    <p class="fragment fade-up">❌ <strong>No abstraction layer</strong> - auth was duplicated everywhere</p>
-                    <p class="fragment fade-up">❌ Needed to <strong>ship fast</strong> - couldn't rewrite everything</p>
+                    <div class="fragment fade-up">
+                        <p>❌ Manual QA had <strong>ZERO coding experience</strong></p>
+                        <p>❌ Java monolith was <strong>brittle</strong> - only 2 people could maintain</p>
+                    </div>
+                    <div class="fragment fade-up">
+                        <p>❌ <strong>No abstraction layer</strong> - auth was duplicated everywhere</p>
+                        <p>❌ Needed to <strong>ship fast</strong> - couldn't rewrite everything</p>
+                    </div>
                 </div>
             </section>
 
             <!-- ========== SLIDE 5: DECISION PATH (Section 4) ========== -->
             <section>
                 <h2>Decision Path</h2>
-                <p style="font-size: 0.8em; color: var(--gray); margin-bottom: 20px;">Why these technical decisions?</p>
                 <div class="two-columns" style="font-size: 0.7em;">
-                    <div class="column">
-                        <div class="decision fragment fade-up">
-                            <span class="decision-q">Why Node.js?</span>
-                            <span class="decision-a">Team already knew JavaScript - low learning curve</span>
+                    <div class="column fragment fade-up">
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 10px;">Why these choices?</p>
+                        <div class="decision">
+                            <span class="decision-q">Node.js</span>
+                            <span class="decision-a">Team already knew JavaScript</span>
                         </div>
-                        <div class="decision fragment fade-up">
-                            <span class="decision-q">Why Page Object Model?</span>
-                            <span class="decision-a">Separation of concerns, maintainable, testable</span>
+                        <div class="decision">
+                            <span class="decision-q">Page Object Model</span>
+                            <span class="decision-a">Separation of concerns</span>
                         </div>
-                        <div class="decision fragment fade-up">
-                            <span class="decision-q">Why npm package?</span>
-                            <span class="decision-a">Easy distribution, version control, quick updates</span>
+                        <div class="decision">
+                            <span class="decision-q">npm package</span>
+                            <span class="decision-a">Easy distribution & versioning</span>
                         </div>
                     </div>
                     <div class="column fragment fade-up">
-                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Example: Login Pattern</p>
-                        <pre style="font-size: 0.55em; margin: 0; text-align: left;"><code>// 5 lines to login
-const { token } = await auth.login({
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Example: 5-line Login</p>
+                        <pre style="font-size: 0.5em; margin: 0; text-align: left;"><code>const { token } = await auth.login({
   email: 'user@test.com',
   password: 'password123'
 });
-
-// Use token in requests
 client.setToken(token);</code></pre>
                     </div>
                 </div>
@@ -109,17 +111,16 @@ client.setToken(token);</code></pre>
             <!-- ========== SLIDE 6: SOLUTION (Section 5) ========== -->
             <section>
                 <h2>The Solution</h2>
-                <p class="fragment fade-up">Built a <strong>Page Object Model framework</strong> on SuperAgent</p>
-                <p class="fragment fade-up">Abstracted <strong>authentication and setup complexity</strong></p>
-                <p class="fragment fade-up">Created <strong>helper functions</strong> for common operations</p>
-                <p class="fragment fade-up">Published as <strong>internal npm package</strong></p>
+                <div class="fragment fade-up">
+                    <p>Built a <strong>Page Object Model framework</strong> on SuperAgent</p>
+                    <p>Abstracted <strong>authentication and setup complexity</strong></p>
+                    <p>Created <strong>helper functions</strong> for common operations</p>
+                    <p>Published as <strong>internal npm package</strong></p>
+                </div>
                 <div class="fragment fade-up solution-highlights">
                     <p>💡 <strong>Other ICs</strong> (knew JS) contributed within <strong>2 weeks</strong></p>
                     <p>💡 <strong>Manual QA</strong> posted crash course on automation + shell basics</p>
                 </div>
-                <p class="fragment fade-up" style="color: var(--green); margin-top: 25px;">
-                    <strong>Result:</strong> Testing load distributed across the team
-                </p>
             </section>
 
             <!-- ========== SLIDE 6.5: THE PILOT (NEW) ========== -->
@@ -131,16 +132,12 @@ client.setToken(token);</code></pre>
                         <p>Contacts team had the <strong>worst broken deployment record</strong>. Staging was constantly down.</p>
                     </div>
                     <div class="sbi-item fragment fade-up">
-                        <span class="sbi-label" style="background: var(--blue);">What I Did</span>
-                        <p>Targeted them as <strong>proof-of-concept</strong>. Built framework → showed them first.</p>
-                    </div>
-                    <div class="sbi-item fragment fade-up">
                         <span class="sbi-label" style="background: var(--green);">Result</span>
-                        <p>Contacts team went from <strong>worst offender</strong> to <strong>least offender</strong> for broken deployments.</p>
+                        <p>Went from <strong>worst offender</strong> to <strong>least offender</strong> for broken deployments.</p>
                     </div>
                 </div>
-                <p class="fragment fade-up" style="margin-top: 20px; font-size: 0.8em; color: var(--light);">
-                    <em>This became the proof point for getting other teams on board.</em>
+                <p class="fragment fade-up" style="margin-top: 20px; font-size: 0.8em;">
+                    Proof point for getting other teams on board.
                 </p>
             </section>
 
@@ -182,21 +179,14 @@ client.setToken(token);</code></pre>
                 <h2>Overcoming Resistance</h2>
                 <div class="sbi-container">
                     <div class="sbi-item fragment fade-up">
-                        <span class="sbi-label" style="background: var(--red);">The Perception</span>
-                        <p>"<strong>Testing in sprint = less scope being delivered</strong>" — managers saw testing as overhead</p>
+                        <span class="sbi-label" style="background: var(--red);">Perception</span>
+                        <p>"<strong>Testing in sprint = less scope</strong>" — managers saw testing as overhead</p>
                     </div>
                     <div class="sbi-item fragment fade-up">
-                        <span class="sbi-label" style="background: var(--amber);">The Reality</span>
-                        <p>Teams with early testing <strong>delivered more on time</strong> because of fewer bugs and less tech debt from pre-testing</p>
-                    </div>
-                    <div class="sbi-item fragment fade-up">
-                        <span class="sbi-label" style="background: var(--green);">The Shift</span>
-                        <p>Proved that testing <strong>accelerates delivery</strong>, not slows it. Changed how leadership thought about QA investment.</p>
+                        <span class="sbi-label" style="background: var(--green);">Shift</span>
+                        <p>Proved teams with early testing <strong>delivered more on time</strong>. Testing accelerates delivery.</p>
                     </div>
                 </div>
-                <p class="fragment fade-up" style="margin-top: 20px; font-size: 0.8em; color: var(--light);">
-                    <em>Reactive detection (QA reports issues) → Proactive prevention (tests catch issues before staging)</em>
-                </p>
             </section>
 
             <!-- ========== SLIDE 7: WHAT I OWNED ========== -->
@@ -408,38 +398,42 @@ curl -X POST "https://circleci.com/api/v2/project/..."
             <!-- ========== SLIDE 13: RESULTS (Section 7) ========== -->
             <section>
                 <h2>Results & Impact</h2>
-                <div class="results-grid" style="font-size: 0.8em; gap: 25px;">
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">3-day → 4 hours</span>
-                        <span class="result-label">Regression cycles</span>
+                <div class="results-grid" style="font-size: 0.8em; gap: 20px;">
+                    <div class="fragment fade-up">
+                        <div class="result-item">
+                            <span class="result-number">3-day → 4 hours</span>
+                            <span class="result-label">Regression cycles</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number">Hours/days → Immediate</span>
+                            <span class="result-label">Bug detection</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number">100+ hrs/month</span>
+                            <span class="result-label">Manual testing saved</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number">Bi-weekly → On-demand</span>
+                            <span class="result-label">Via PR labels</span>
+                        </div>
                     </div>
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">Hours/days → Immediate</span>
-                        <span class="result-label">Bug detection</span>
-                    </div>
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">100+ hrs/month</span>
-                        <span class="result-label">Manual testing saved</span>
-                    </div>
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">Bi-weekly → On-demand</span>
-                        <span class="result-label">Via PR labels</span>
-                    </div>
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">80% → 80%</span>
-                        <span class="result-label">Manual → Automated coverage</span>
-                    </div>
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">Zero critical bugs</span>
-                        <span class="result-label">For 6 months</span>
-                    </div>
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">40% faster</span>
-                        <span class="result-label">Test execution</span>
-                    </div>
-                    <div class="result-item fragment fade-up">
-                        <span class="result-number">10+ teams</span>
-                        <span class="result-label">Adopted framework</span>
+                    <div class="fragment fade-up">
+                        <div class="result-item">
+                            <span class="result-number">80% → 80%</span>
+                            <span class="result-label">Manual → Automated coverage</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number">Zero critical bugs</span>
+                            <span class="result-label">For 6 months</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number">40% faster</span>
+                            <span class="result-label">Test execution</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number">10+ teams</span>
+                            <span class="result-label">Adopted framework</span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -451,28 +445,21 @@ curl -X POST "https://circleci.com/api/v2/project/..."
                     <div class="column fragment fade-up">
                         <p style="color: var(--green); font-weight: bold;">What Worked</p>
                         <ul style="line-height: 1.6;">
-                            <li>Choosing Node.js (team already knew it)</li>
+                            <li>Node.js (team already knew it)</li>
                             <li>Abstracting auth complexity</li>
                             <li>Internal npm for distribution</li>
-                            <li>Brown bag + individual training</li>
-                            <li>Page Object Model pattern</li>
                             <li>Pilot with proof-of-concept first</li>
                         </ul>
                     </div>
                     <div class="column fragment fade-up">
                         <p style="color: var(--red); font-weight: bold;">What I'd Do Differently</p>
                         <ul style="line-height: 1.6;">
-                            <li><strong>@latest broke teams</strong> — 1 person per team to fix</li>
-                            <li style="margin-top: 8px;"><em>Released breaking change, all 6 teams had to stop and fix. Took 2-3 days of unplanned work.</em></li>
-                            <li style="margin-top: 8px;">Pin to major version from day 1</li>
+                            <li><strong>@latest broke teams</strong> — all 6 teams had to fix, 2-3 days unplanned</li>
+                            <li>Pin to major version from day 1</li>
                             <li>Add changelog as part of release</li>
-                            <li>Use code gen from day 1</li>
                         </ul>
                     </div>
                 </div>
-                <p class="fragment fade-up" style="margin-top: 15px; font-size: 0.7em; color: var(--gray);">
-                    💡 <strong>First Node package</strong> — FE team helped with entry point vs folder imports
-                </p>
             </section>
 
             <!-- ========== SLIDE 15: DISCUSSION ========== -->
