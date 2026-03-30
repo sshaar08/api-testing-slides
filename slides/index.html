@@ -157,15 +157,14 @@ const response = await handleRequest(
                         <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Complete Test (10 lines)</p>
                         <pre style="font-size: 0.45em; margin: 0; text-align: left;"><code>const { handleRequest, posts } = require('api-test-core');
 
+const headers = { 
+  Authorization: 'Bearer ${token}' 
+};
+
 describe('Posts API', () => {
   it('should create a post', async () => {
-    const testPost = {
-      title: 'My Test Post',
-      body: 'Test content',
-      userId: 1
-    };
     const response = await handleRequest(
-      posts.create(testPost)
+      posts.create(postData, headers)
     );
     expect(response.status).to.equal(201);
   });
