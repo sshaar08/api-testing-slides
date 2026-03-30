@@ -154,19 +154,20 @@ const response = await handleRequest(
                 <h2>Framework & Test Example</h2>
                 <div class="two-columns" style="font-size: 0.7em;">
                     <div class="column fragment fade-up">
-                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Complete Test (10 lines)</p>
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Example Test</p>
                         <pre style="font-size: 0.45em; margin: 0; text-align: left;"><code>const { handleRequest, posts } = require('api-test-core');
-
-const headers = { 
-  Authorization: 'Bearer ${token}' 
-};
 
 describe('Posts API', () => {
   it('should create a post', async () => {
+    const postData = { title: 'Test', body: 'Content', userId: 1 };
+    
     const response = await handleRequest(
-      posts.create(postData, headers)
+      posts.create(postData)
     );
+    
     expect(response.status).to.equal(201);
+    expect(response.data).to.have.property('id');
+    expect(response.data.title).to.equal(postData.title);
   });
 });</code></pre>
                         <p style="margin-top: 8px; font-size: 0.6em;">
