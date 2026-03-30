@@ -81,14 +81,16 @@
                         <p><strong>npm package</strong> — easy distribution & versioning</p>
                     </div>
                     <div class="column fragment fade-up">
-                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Example: 5-line Login</p>
-                        <pre style="font-size: 0.5em; margin: 0; text-align: left;"><code>const { token } = await auth.login({
-  email: 'user@test.com',
-  password: 'password123'
-});
-client.setToken(token);</code></pre>
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Example: 5-line Test</p>
+                        <pre style="font-size: 0.5em; margin: 0; text-align: left;"><code>const { posts, handleRequest,
+  generatePostData } = require('api-test-core');
+
+const post = generatePostData();
+const response = await handleRequest(
+  posts.create(postData)
+);</code></pre>
                         <p style="margin-top: 15px; font-size: 0.7em;">
-                            <a href="https://github.com/sshaar08/api-testing-framework/blob/main/common/authentication.js" target="_blank">GitHub: auth.js →</a>
+                            <a href="https://github.com/sshaar08/api-testing-framework/blob/main/api-test-core/adapters/posts.js" target="_blank">GitHub: posts.js →</a>
                         </p>
                     </div>
                 </div>
@@ -171,7 +173,7 @@ describe('Posts API', () => {
   });
 });</code></pre>
                         <p style="margin-top: 8px; font-size: 0.6em;">
-                            <a href="https://github.com/sshaar08/api-testing-framework/blob/main/src/agents.test.js" target="_blank">GitHub: test.js →</a>
+                            <a href="https://github.com/sshaar08/api-testing-framework/blob/main/demo/test/demo.test.js" target="_blank">GitHub: demo.test.js →</a>
                         </p>
                     </div>
                     <div class="column fragment fade-up">
