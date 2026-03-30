@@ -74,24 +74,12 @@
                         <p>❌ Manual QA had <strong>ZERO coding experience</strong></p>
                         <p>❌ Java monolith was <strong>brittle</strong> - only 2 people</p>
                         <p>❌ <strong>No abstraction layer</strong> - auth duplicated everywhere</p>
-                        
-                        <p style="margin-top: 15px; color: var(--green); font-weight: bold;">Decisions</p>
+                    </div>
+                    <div class="column fragment fade-up">
+                        <p style="margin-top: 0; color: var(--green); font-weight: bold;">Decisions</p>
                         <p><strong>Node.js</strong> — team already knew JavaScript</p>
                         <p><strong>Page Object Model</strong> — separation of concerns</p>
                         <p><strong>npm package</strong> — easy distribution & versioning</p>
-                    </div>
-                    <div class="column fragment fade-up">
-                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Example: 5-line Test</p>
-                        <pre style="font-size: 0.5em; margin: 0; text-align: left;"><code>const { posts, handleRequest,
-  generatePostData } = require('api-test-core');
-
-const post = generatePostData();
-const response = await handleRequest(
-  posts.create(postData)
-);</code></pre>
-                        <p style="margin-top: 15px; font-size: 0.7em;">
-                            <a href="https://github.com/sshaar08/api-testing-framework/blob/main/api-test-core/adapters/posts.js" target="_blank">GitHub: posts.js →</a>
-                        </p>
                     </div>
                 </div>
             </section>
@@ -108,44 +96,6 @@ const response = await handleRequest(
                 <div class="fragment fade-up solution-highlights">
                     <p>💡 <strong>Other ICs</strong> (knew JS) contributed within <strong>2 weeks</strong></p>
                     <p>💡 <strong>Manual QA</strong> Made a crash course on automation + shell basics</p>
-                </div>
-            </section>
-
-            <!-- ========== SLIDE 5.5: ADOPTION JOURNEY (Section 5) ========== -->
-            <section>
-                <h2>Adoption Journey</h2>
-                <div class="two-columns" style="font-size: 0.7em;">
-                    <div class="column fragment fade-up">
-                        <p style="color: var(--amber); font-weight: bold;">Pilot: Contacts Team</p>
-                        <p style="margin-bottom: 10px;">Worst broken deployment record → <strong>Least offender</strong></p>
-                        
-                        <p style="color: var(--green); font-weight: bold;">Enable, Don't Depend</p>
-                        <ul style="line-height: 1.5;">
-                            <li><strong>30-min Lunch & Learn</strong> — quick intro</li>
-                            <li><strong>Confluence docs</strong> — self-service</li>
-                            <li><strong>Boilerplates</strong> — copy-paste start</li>
-                            <li><strong>Embedded QA</strong> — teams owned tests</li>
-                        </ul>
-                        
-                        <p style="margin-top: 10px;"><strong>Perception:</strong> "Testing = less scope"</p>
-                        <p><strong>Shift:</strong> Proved testing <em>accelerates</em> delivery</p>
-                    </div>
-                    <div class="column fragment fade-up">
-                        <p style="color: var(--green); font-weight: bold;">Scale</p>
-                        <div class="results-grid" style="gap: 15px;">
-                            <div class="result-item" style="padding: 15px;">
-                                <span class="result-number" style="font-size: 1.8em;">10+</span>
-                                <span class="result-label">Teams adopted</span>
-                            </div>
-                            <div class="result-item" style="padding: 15px;">
-                                <span class="result-number" style="font-size: 1.8em;">100s</span>
-                                <span class="result-label">Tests written</span>
-                            </div>
-                        </div>
-                        <p style="margin-top: 15px; font-size: 0.7em;">
-                            QA + SDETs became <strong>same skillset</strong>, different seniority levels
-                        </p>
-                    </div>
                 </div>
             </section>
 
@@ -228,7 +178,45 @@ module.exports = {
                 </div>
             </section>
 
-            <!-- ========== SLIDE 7: PIPELINE ARCHITECTURE (Section 6) ========== -->
+            <!-- ========== SLIDE 7: ADOPTION JOURNEY (Section 6) ========== -->
+            <section>
+                <h2>Adoption Journey</h2>
+                <div class="two-columns" style="font-size: 0.7em;">
+                    <div class="column fragment fade-up">
+                        <p style="color: var(--amber); font-weight: bold;">Pilot: Contacts Team</p>
+                        <p style="margin-bottom: 10px;">Worst broken deployment record → <strong>Least offender</strong></p>
+                        
+                        <p style="color: var(--green); font-weight: bold;">Enable, Don't Depend</p>
+                        <ul style="line-height: 1.5;">
+                            <li><strong>30-min Lunch & Learn</strong> — quick intro</li>
+                            <li><strong>Confluence docs</strong> — self-service</li>
+                            <li><strong>Boilerplates</strong> — copy-paste start</li>
+                            <li><strong>Embedded QA</strong> — teams owned tests</li>
+                        </ul>
+                        
+                        <p style="margin-top: 10px;"><strong>Perception:</strong> "Testing = less scope"</p>
+                        <p><strong>Shift:</strong> Proved testing <em>accelerates</em> delivery</p>
+                    </div>
+                    <div class="column fragment fade-up">
+                        <p style="color: var(--green); font-weight: bold;">Scale</p>
+                        <div class="results-grid" style="gap: 15px;">
+                            <div class="result-item" style="padding: 15px;">
+                                <span class="result-number" style="font-size: 1.8em;">10+</span>
+                                <span class="result-label">Teams adopted</span>
+                            </div>
+                            <div class="result-item" style="padding: 15px;">
+                                <span class="result-number" style="font-size: 1.8em;">100s</span>
+                                <span class="result-label">Tests written</span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; font-size: 0.7em;">
+                            QA + SDETs became <strong>same skillset</strong>, different seniority levels
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 8: PIPELINE ARCHITECTURE ========== -->
             <section>
                 <h2>Pipeline Architecture</h2>
                 <div class="two-columns" style="font-size: 0.7em;">
@@ -274,7 +262,7 @@ module.exports = {
                 </div>
             </section>
 
-            <!-- ========== SLIDE 8: TEAM ONBOARDING (Section 6) ========== -->
+            <!-- ========== SLIDE 9: TEAM ONBOARDING ========== -->
             <section>
                 <h2>Team Onboarding</h2>
                 <p style="font-size: 0.75em; color: var(--gray); margin-bottom: 10px;">Manual QA had <strong>ZERO coding experience</strong></p>
@@ -316,7 +304,7 @@ module.exports = {
                 </div>
             </section>
 
-            <!-- ========== SLIDE 9: RESULTS (Section 7) ========== -->
+            <!-- ========== SLIDE 10: RESULTS (Section 7) ========== -->
             <section>
                 <h2>Results & Impact</h2>
                 <div class="results-grid" style="font-size: 0.8em; gap: 20px;">
@@ -359,7 +347,7 @@ module.exports = {
                 </div>
             </section>
 
-            <!-- ========== SLIDE 10: LESSONS LEARNED (Section 8) ========== -->
+            <!-- ========== SLIDE 11: LESSONS LEARNED (Section 8) ========== -->
             <section>
                 <h2>Lessons Learned</h2>
                 <div class="two-columns" style="font-size: 0.7em;">
@@ -383,7 +371,7 @@ module.exports = {
                 </div>
             </section>
 
-            <!-- ========== SLIDE 11: DISCUSSION ========== -->
+            <!-- ========== SLIDE 12: DISCUSSION ========== -->
             <section>
                 <h2>Discussion</h2>
                 <ol style="text-align: left; font-size: 0.8em;">
@@ -394,7 +382,7 @@ module.exports = {
                 </ol>
             </section>
 
-            <!-- ========== SLIDE 12: THANK YOU ========== -->
+            <!-- ========== SLIDE 13: THANK YOU ========== -->
             <section data-background-gradient="linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)">
                 <h1>Thank You</h1>
                 <p>Questions?</p>
