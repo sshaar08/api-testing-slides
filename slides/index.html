@@ -96,7 +96,7 @@ const response = await handleRequest(
                 </div>
             </section>
 
-            <!-- ========== SLIDE 6: SOLUTION (Section 5) ========== -->
+            <!-- ========== SLIDE 5.5: SOLUTION (Section 5) ========== -->
             <section>
                 <h2>The Solution</h2>
                 <div class="fragment fade-up">
@@ -149,12 +149,48 @@ const response = await handleRequest(
                 </div>
             </section>
 
-            <!-- ========== SLIDE 7: FRAMEWORK & TEST (Section 6) ========== -->
+            <!-- ========== SLIDE 7: API TEST HARNESS (Section 6) ========== -->
             <section>
-                <h2>Framework & Test Example</h2>
+                <h2>API Test Harness</h2>
+                <div class="two-columns" style="font-size: 0.65em;">
+                    <div class="column fragment fade-up">
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 8px;">Features</p>
+                        <ul style="line-height: 1.5;">
+                            <li><strong>Auth</strong> — JWT, API Key, Basic Auth</li>
+                            <li><strong>Retry logic</strong> — automatic retry on failure</li>
+                            <li><strong>Parallel requests</strong> — batch multiple calls</li>
+                            <li><strong>Test data gen</strong> — @faker-js/faker</li>
+                            <li><strong>Error handling</strong> — detailed error messages</li>
+                        </ul>
+                        <p style="color: var(--green); font-weight: bold; margin: 15px 0 8px;">Adapters</p>
+                        <ul style="line-height: 1.5;">
+                            <li><strong>posts</strong> — getAll, getById, create, update, patch, remove</li>
+                            <li><strong>users</strong> — getAll, getById</li>
+                            <li><strong>comments</strong> — getByPost, create</li>
+                        </ul>
+                    </div>
+                    <div class="column fragment fade-up">
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 8px;">Structure</p>
+                        <pre style="font-size: 0.45em; margin: 0; text-align: left;"><code>api-test-core/
+├── common/
+│   ├── core.js       # handleRequest, retries
+│   ├── auth.js       # JWT, API Key, Basic
+│   └── helper.js     # @faker-js/faker
+├── adapters/         # API abstractions
+└── test/             # 24 tests passing</code></pre>
+                        <p style="margin-top: 10px; font-size: 0.6em;">
+                            <a href="https://github.com/sshaar08/api-testing-framework/blob/main/api-test-core/README.md" target="_blank">GitHub: README →</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 8: TEST EXAMPLE (Section 6) ========== -->
+            <section>
+                <h2>Test Example</h2>
                 <div class="two-columns" style="font-size: 0.7em;">
                     <div class="column fragment fade-up">
-                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Example Test</p>
+                        <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Write a Test</p>
                         <pre style="font-size: 0.45em; margin: 0; text-align: left;"><code>const { handleRequest, posts } = require('api-test-core');
 
 describe('Posts API', () => {
@@ -167,7 +203,6 @@ describe('Posts API', () => {
     
     expect(response.status).to.equal(201);
     expect(response.data).to.have.property('id');
-    expect(response.data.title).to.equal(postData.title);
   });
 });</code></pre>
                         <p style="margin-top: 8px; font-size: 0.6em;">
@@ -187,16 +222,13 @@ module.exports = {
   create: (data) => postsClient.post('/', data)
 };</code></pre>
                         <p style="margin-top: 8px; font-size: 0.6em;">
-                            <a href="https://github.com/sshaar08/api-testing-framework/tree/main/adapters" target="_blank">GitHub: all adapters →</a>
-                        </p>
-                        <p style="margin-top: 10px; font-size: 0.6em;">
-                            <strong>Built:</strong> Docker • CircleCI • GitHub Actions
+                            <a href="https://github.com/sshaar08/api-testing-framework/blob/main/api-test-core/adapters/posts.js" target="_blank">GitHub: posts.js →</a>
                         </p>
                     </div>
                 </div>
             </section>
 
-            <!-- ========== SLIDE 8: PIPELINE ARCHITECTURE (Section 6) ========== -->
+            <!-- ========== SLIDE 9: PIPELINE ARCHITECTURE (Section 6) ========== -->
             <section>
                 <h2>Pipeline Architecture</h2>
                 <div class="two-columns" style="font-size: 0.7em;">
@@ -242,7 +274,7 @@ module.exports = {
                 </div>
             </section>
 
-            <!-- ========== SLIDE 11: TEAM ONBOARDING (Section 6) ========== -->
+            <!-- ========== SLIDE 10: TEAM ONBOARDING (Section 6) ========== -->
             <section>
                 <h2>Team Onboarding</h2>
                 <p style="font-size: 0.75em; color: var(--gray); margin-bottom: 10px;">Manual QA had <strong>ZERO coding experience</strong></p>
@@ -284,7 +316,7 @@ module.exports = {
                 </div>
             </section>
 
-            <!-- ========== SLIDE 13: RESULTS (Section 7) ========== -->
+            <!-- ========== SLIDE 11: RESULTS (Section 7) ========== -->
             <section>
                 <h2>Results & Impact</h2>
                 <div class="results-grid" style="font-size: 0.8em; gap: 20px;">
@@ -327,7 +359,7 @@ module.exports = {
                 </div>
             </section>
 
-            <!-- ========== SLIDE 14: LESSONS LEARNED (Section 8) ========== -->
+            <!-- ========== SLIDE 12: LESSONS LEARNED (Section 8) ========== -->
             <section>
                 <h2>Lessons Learned</h2>
                 <div class="two-columns" style="font-size: 0.7em;">
@@ -351,7 +383,7 @@ module.exports = {
                 </div>
             </section>
 
-            <!-- ========== SLIDE 15: DISCUSSION ========== -->
+            <!-- ========== SLIDE 13: DISCUSSION ========== -->
             <section>
                 <h2>Discussion</h2>
                 <ol style="text-align: left; font-size: 0.8em;">
@@ -362,7 +394,7 @@ module.exports = {
                 </ol>
             </section>
 
-            <!-- ========== SLIDE 16: THANK YOU ========== -->
+            <!-- ========== SLIDE 14: THANK YOU ========== -->
             <section data-background-gradient="linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)">
                 <h1>Thank You</h1>
                 <p>Questions?</p>
