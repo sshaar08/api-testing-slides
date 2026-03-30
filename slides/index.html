@@ -163,7 +163,6 @@ describe('Posts API', () => {
       body: 'Test content',
       userId: 1
     };
-    // Auth handled automatically
     const response = await handleRequest(
       posts.create(testPost)
     );
@@ -190,10 +189,10 @@ module.exports = {
                         <p style="margin-top: 8px; font-size: 0.6em;">
                             <a href="https://github.com/sshaar08/api-testing-framework/tree/main/adapters" target="_blank">GitHub: all adapters →</a>
                         </p>
+                        <p style="margin-top: 10px; font-size: 0.6em;">
+                            <strong>Built:</strong> Docker • CircleCI • GitHub Actions
+                        </p>
                     </div>
-                </div>
-                <div class="fragment fade-up" style="margin-top: 15px; font-size: 0.65em;">
-                    <p><strong>Built:</strong> Framework • Auth (JWT/API Key/Basic) • Helpers • <a href="https://github.com/sshaar08/api-testing-framework/blob/main/docker/Dockerfile" target="_blank">GitHub: Docker</a> • <a href="https://github.com/sshaar08/api-testing-framework/blob/main/.circleci/config.yml" target="_blank">GitHub: CircleCI</a> • <a href="https://github.com/sshaar08/api-testing-framework/blob/main/.github/workflows/pr-label-trigger.yml" target="_blank">GitHub: Actions</a></p>
                 </div>
             </section>
 
