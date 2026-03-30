@@ -155,11 +155,10 @@ const response = await handleRequest(
                 <div class="two-columns" style="font-size: 0.7em;">
                     <div class="column fragment fade-up">
                         <p style="color: var(--green); font-weight: bold; margin-bottom: 5px;">Complete Test (10 lines)</p>
-                        <pre style="font-size: 0.45em; margin: 0; text-align: left;"><code>const { handleRequest } = require('api-test-core');
-const { posts } = require('api-test-core');
+                        <pre style="font-size: 0.45em; margin: 0; text-align: left;"><code>const { handleRequest, posts } = require('api-test-core');
 
 describe('Posts API', () => {
-  it('should create and retrieve a post', async () => {
+  it('should create a post', async () => {
     const testPost = {
       title: 'My Test Post',
       body: 'Test content',
@@ -169,7 +168,6 @@ describe('Posts API', () => {
       posts.create(testPost)
     );
     expect(response.status).to.equal(201);
-    expect(response.data.title).to.equal(testPost.title);
   });
 });</code></pre>
                         <p style="margin-top: 8px; font-size: 0.6em;">
